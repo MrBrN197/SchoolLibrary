@@ -1,9 +1,9 @@
 require_relative('./person')
 
 class Student < Person
-  def initialize(*args, **kwargs)
+  def initialize(*args, classroom:, **kwargs)
     super(*args, **kwargs)
-    @classroom = nil;
+    @classroom = classroom;
   end
 
   def play_hooky

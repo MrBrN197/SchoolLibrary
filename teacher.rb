@@ -1,9 +1,9 @@
 require_relative('./person')
 
 class Teacher < Person
-  def initialize(*args, **kwargs)
+  def initialize(*args, specialization:, **kwargs)
     super(*args, **kwargs)
-    @specialization = nil
+    @specialization = specialization
   end
 
   def can_use_services?
