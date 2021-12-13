@@ -6,11 +6,10 @@ class Person
     @id = 234_234
     @name = name
     @age = age
-    puts name
     @parent_permission = parent_permission
   end
 
-  def can_use_services
+  def can_use_services?
     is_of_age? || @parent_permission
   end
 
