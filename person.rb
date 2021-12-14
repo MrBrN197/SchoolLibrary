@@ -12,7 +12,7 @@ class Person
   end
 
   def validate_name
-    @name = @corrector.validate(@name)
+    @name = @corrector.correct_name(@name)
   end
 
   def can_use_services?
