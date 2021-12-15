@@ -1,5 +1,4 @@
 class Book
-
   attr_accessor :title, :author, :rentals
 
   def initialize(title, author)
@@ -12,5 +11,4 @@ class Book
     @rentals.push(rental) unless @rentals.include?(rental)
     rental.book = self
   end
-
 end
