@@ -2,12 +2,17 @@ require_relative './book'
 require_relative './student'
 require_relative './teacher'
 require_relative './classroom'
+require_relative './rental'
 
 class App
   def initialize
-    @books = []
-    @people = []
-    @main_classrom = Classroom.new('main classroom')
+    @books = [
+      Book.new("dafdsaf", "dasfds")
+    ]
+    @people = [
+      Teacher.new(32, name: "Teacher", specialization: "fiedl")
+    ]
+    @rentals = []
   end
 
   def list_all_books
@@ -61,7 +66,19 @@ class App
   end
 
   def create_rental
-    puts 'creating rental'
+    puts "Select a book from the following list by number (not id)"
+    @books.each_with_index { |b, idx| puts "#{idx}) #{b}" }
+    idx = Integer(gets.chomp)
+    book = @books[idx]
+    
+    puts "Select a person from the following list by number (not id)"
+    @people.each_with_index { |p, idx| puts "#{idx}) #{p}" }
+    idx = Integer(gets.chomp)
+    person = @people[idx]
+
+    print "Date: "
+    date = gets.chomp
+    @rentals << Rental.new(book, person, date)
   end
 
   def list_all_rentals
