@@ -1,24 +1,54 @@
 require_relative './book'
+require_relative './student'
+require_relative './teacher'
+require_relative './classroom'
 
 class App
   def initialize
-    @books = [
-      Book.new('title', 'author')
-    ]
+    @books = []
+    @people = []
+    @main_classrom = Classroom.new('main classroom')
   end
 
   def list_all_books
-    @books.each { |book| puts 
+    @books.each do |book|
+      puts
       puts "Title: \"#{book.title}\", Author: #{book.author}"
-    }
+    end
   end
 
   def list_all_people
     puts 'listing all people'
   end
 
+  def create_student
+    print 'Age: '
+    age = Integer(gets.chomp)
+    print 'Name: '
+    name = gets.chomp
+    print 'Has parent permission [y/n]: '
+    parent_permission = gets.chomp.downcase == 'y'
+    @people << Student.new(age, name: name, parent_permission: parent_permission, classroom: @main_classrom)
+  end
+
+  def create_teacher
+    print 'Age: '
+    age = Integer(gets.chomp)
+    print 'Name: '
+    name = gets.chomp
+    print 'Specialization: '
+    spc = gets.chomp
+    @people << Teacher.new(age, name: name, specialization: spc)
+  end
+
   def create_person
-    puts 'creating person'
+    print 'Do you want to create a student(1) or a teacher(2)? [Input the number]: '
+    selector = Integer(gets.chomp)
+    case selector
+    when 1 then create_student
+    when 2 then create_teacher
+    else puts 'Invalid selection'
+    end
   end
 
   def create_book
