@@ -8,7 +8,9 @@ class App
   end
 
   def list_all_books
-    puts 'listing all books'
+    @books.each { |book| puts 
+      puts "Title: \"#{book.title}\", Author: #{book.author}"
+    }
   end
 
   def list_all_people
