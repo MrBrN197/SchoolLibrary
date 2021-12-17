@@ -18,7 +18,7 @@ class App
   end
 
   def list_all_people
-    puts 'listing all people'
+    @people.each_with_index { |p, idx| puts p }
   end
 
   def create_student
