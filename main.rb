@@ -1,4 +1,12 @@
+require_relative './book'
+
 class App
+  def initialize
+    @books = [
+      Book.new('title', 'author')
+    ]
+  end
+
   def list_all_books
     puts 'listing all books'
   end
@@ -12,7 +20,12 @@ class App
   end
 
   def create_book
-    puts 'creating book'
+    print 'Title: '
+    title = gets.chomp
+    print 'Author: '
+    author = gets.chomp
+    book = Book.new(title, author)
+    @books << book
   end
 
   def create_rental
