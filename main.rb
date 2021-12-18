@@ -9,7 +9,7 @@ class App
     @books = []
     @people = []
     @rentals = []
-    @main_classroom = Classroom.new('Main Class') 
+    @main_classroom = Classroom.new('Main Class')
   end
 
   def list_all_books
