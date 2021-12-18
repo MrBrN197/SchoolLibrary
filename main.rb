@@ -6,12 +6,11 @@ require_relative './rental'
 
 class App
   def initialize
-    @books = [
-      Book.new("dafdsaf", "dasfds")
-    ]
-    @people = [
-      Teacher.new(32, name: "Teacher", specialization: "fiedl")
-    ]
+    book = Book.new('dafdsaf', 'dasfds')
+    teacher = Teacher.new(32, name: 'Teacher', specialization: 'fiedl')
+    puts teacher.id
+    @books = []
+    @people = []
     @rentals = []
   end
 
@@ -23,7 +22,7 @@ class App
   end
 
   def list_all_people
-    @people.each_with_index { |p, idx| puts p }
+    @people.each_with_index { |p, _idx| puts p }
   end
 
   def create_student
@@ -66,23 +65,27 @@ class App
   end
 
   def create_rental
-    puts "Select a book from the following list by number (not id)"
+    puts 'Select a book from the following list by number (not id)'
     @books.each_with_index { |b, idx| puts "#{idx}) #{b}" }
     idx = Integer(gets.chomp)
     book = @books[idx]
-    
-    puts "Select a person from the following list by number (not id)"
+
+    puts 'Select a person from the following list by number (not id)'
     @people.each_with_index { |p, idx| puts "#{idx}) #{p}" }
     idx = Integer(gets.chomp)
     person = @people[idx]
 
-    print "Date: "
+    print 'Date: '
     date = gets.chomp
     @rentals << Rental.new(book, person, date)
   end
 
   def list_all_rentals
-    puts 'list all rentals'
+    print 'ID of person: '
+    id = Integer(gets.chomp)
+    rentals = @rentals.select { |r| r.owner.id == id }
+    puts 'Rentals:'
+    puts rentals
   end
 
   def handle_input
