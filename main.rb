@@ -6,21 +6,22 @@ require_relative './rental'
 
 class App
   def initialize
-    puts teacher.id
     @books = []
     @people = []
     @rentals = []
+    @main_classroom = Classroom.new('Main Class') 
   end
 
   def list_all_books
     @books.each do |book|
-      puts
       puts "Title: \"#{book.title}\", Author: #{book.author}"
     end
+    puts ''
   end
 
   def list_all_people
     @people.each_with_index { |p, _idx| puts p }
+    puts ''
   end
 
   def create_student
@@ -30,7 +31,7 @@ class App
     name = gets.chomp
     print 'Has parent permission [y/n]: '
     parent_permission = gets.chomp.downcase == 'y'
-    @people << Student.new(age, name: name, parent_permission: parent_permission, classroom: @main_classrom)
+    @people << Student.new(age, name: name, parent_permission: parent_permission, classroom: @main_classroom)
   end
 
   def create_teacher
