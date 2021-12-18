@@ -6,8 +6,6 @@ require_relative './rental'
 
 class App
   def initialize
-    book = Book.new('dafdsaf', 'dasfds')
-    teacher = Teacher.new(32, name: 'Teacher', specialization: 'fiedl')
     puts teacher.id
     @books = []
     @people = []
@@ -71,7 +69,7 @@ class App
     book = @books[idx]
 
     puts 'Select a person from the following list by number (not id)'
-    @people.each_with_index { |p, idx| puts "#{idx}) #{p}" }
+    @people.each_with_index { |p, i| puts "#{i}) #{p}" }
     idx = Integer(gets.chomp)
     person = @people[idx]
 
@@ -88,6 +86,7 @@ class App
     puts rentals
   end
 
+  # rubocop:disable Metrics/CyclomaticComplexity
   def handle_input
     n = Integer(gets.chomp)
     case n
@@ -104,6 +103,7 @@ class App
       puts 'Please select a number between 1-7'
     end
   end
+  # rubocop:enable Metrics/CyclomaticComplexity
 
   def start
     puts 'Welcome to School Library App!'
