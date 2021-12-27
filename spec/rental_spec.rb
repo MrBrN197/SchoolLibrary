@@ -7,6 +7,6 @@ describe Rental do
     rentals = []
     expect(book).to receive(:rentals).at_least(:once).and_return(rentals)
     expect(owner).to receive(:rentals).at_least(:once).and_return(rentals)
-    rental = Rental.new(book, owner)
+    Rental.new(book, owner)
   end
 end

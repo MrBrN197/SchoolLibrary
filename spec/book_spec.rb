@@ -1,9 +1,6 @@
 require_relative '../book'
 
-
-
 describe Book do
-
   it 'that Book is initialized correctly' do
     title = 'A Song of Ice and Fire'
     author = 'George R.R Martin'
@@ -17,5 +14,4 @@ describe Book do
     expect(rental).to receive(:book=)
     book.add_rental(rental)
   end
-
 end
